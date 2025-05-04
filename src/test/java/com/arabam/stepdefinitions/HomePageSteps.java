@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import static org.junit.Assert.assertTrue;
 
 public class HomePageSteps {
     private WebDriver driver;
@@ -31,7 +32,12 @@ public class HomePageSteps {
 
     @When("cookies notification appears")
     public void cookiesNotificationAppears() {
-        // This step is handled in the next step
+        // Wait for cookies notification
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("user accepts cookies")
@@ -47,5 +53,15 @@ public class HomePageSteps {
     @Then("search results should be displayed")
     public void searchResultsShouldBeDisplayed() {
         // Add verification logic here
+    }
+
+    @When("user clicks on tractor section")
+    public void userClicksOnTractorSection() {
+        homePage.clickTractorSection();
+    }
+
+    @Then("tractor listings should be displayed")
+    public void tractorListingsShouldBeDisplayed() {
+        assertTrue("Tractor listings page should be displayed", homePage.isTractorListingsDisplayed());
     }
 }
