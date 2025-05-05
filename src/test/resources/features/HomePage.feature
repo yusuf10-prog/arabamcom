@@ -14,3 +14,8 @@ Feature: Arabam.com Homepage Functionality
     Given user is on the arabam.com homepage
     When user clicks on tractor section
     Then tractor listings should be displayed
+
+  Scenario: User can navigate to Otomobil section
+    Given user is on the arabam.com homepage
+    When user clicks on Otomobil section
+    Then otomobil listings should be displayed

@@ -50,6 +50,11 @@ public class HomePageSteps {
         homePage.searchVehicle(searchText);
     }
 
+    @When("user clicks on Otomobil section")
+    public void userClicksOnOtomobilSection() {
+        homePage.clickOtomobilSection();
+    }
+
     @Then("search results should be displayed")
     public void searchResultsShouldBeDisplayed() {
         // Add verification logic here
@@ -62,6 +67,11 @@ public class HomePageSteps {
 
     @Then("tractor listings should be displayed")
     public void tractorListingsShouldBeDisplayed() {
-        assertTrue("Tractor listings page should be displayed", homePage.isTractorListingsDisplayed());
+        assertTrue(homePage.isTractorListingsDisplayed());
+    }
+
+    @Then("otomobil listings should be displayed")
+    public void otomobilListingsShouldBeDisplayed() {
+        assertTrue(homePage.isOtomobilListingsDisplayed());
     }
 }

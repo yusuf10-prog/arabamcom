@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.arabam.runners.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 188.6 s -- in com.arabam.runners.TestRunner
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 246.4 s -- in com.arabam.runners.TestRunner
