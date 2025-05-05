@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
     private final By searchButton = By.cssSelector("button.search-button, button[type='submit']");
     private final By tractorSection = By.cssSelector("a[href*='traktor'], a[title*='Traktör'], a:contains('Traktör')");
     private final By otomobilSection = By.cssSelector("a[href*='otomobil'], a[title*='Otomobil']");
+    private final By karavanSection = By.cssSelector("a[href*='karavan'], a[title*='Karavan']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -85,11 +86,34 @@ public class HomePage extends BasePage {
         }
     }
 
+    public void clickKaravanSection() {
+        waitForOverlaysToDisappear();
+        try {
+            clickElement(karavanSection);
+        } catch (Exception e) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement karavanElement = (WebElement) js.executeScript(
+                "return document.querySelector('a[href*=\"karavan\"]') || " +
+                "document.querySelector('a[title*=\"Karavan\"]') || " +
+                "Array.from(document.getElementsByTagName('a')).find(el => el.textContent.includes('Karavan'));"
+            );
+            if (karavanElement != null) {
+                js.executeScript("arguments[0].click();", karavanElement);
+            } else {
+                throw new RuntimeException("Karavan section could not be found");
+            }
+        }
+    }
+
     public boolean isTractorListingsDisplayed() {
         return driver.getCurrentUrl().contains("/traktor");
     }
 
     public boolean isOtomobilListingsDisplayed() {
         return driver.getCurrentUrl().contains("/otomobil");
+    }
+
+    public boolean isKaravanListingsDisplayed() {
+        return driver.getCurrentUrl().contains("/karavan");
     }
 }
